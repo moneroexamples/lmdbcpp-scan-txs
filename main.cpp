@@ -139,9 +139,5 @@ int main(int ac, const char* av[])  {
 
     mylmdb.for_all_outputs(output_search);
 
-
-    cout << endl;
-
-
     return EXIT_SUCCESS;
 }
