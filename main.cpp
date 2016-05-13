@@ -36,13 +36,7 @@ int main(int ac, const char* av[])  {
     auto testnet_opt  = opts.get_option<bool>("testnet");
     auto search_opt   = opts.get_option<bool>("search");
 
-
     bool testnet         = *testnet_opt;
-    bool search_enabled  = *search_opt;
-
-
-
-
 
     string xmr_address_str {"43A7NUmo5HbhJoSKbw9bRWW4u2b8dNfhKheTR5zxoRwQ7bULK5TgUQeAvPS5EVNLAJYZRQYqXCmhdf26zG2Has35SpiF1FP"};
     string viewkey_str    {"9c2edec7636da3fbb343931d6c3d6e11bcd8042ff7e11de98a8d364f31976c04"};
@@ -78,22 +72,6 @@ int main(int ac, const char* av[])  {
 
     fmt::print("Blockchain path: {:s}\n", blockchain_path);
 
-    // enable basic monero log output
-    xmreg::enable_monero_log();
-
-    // create instance of our MicroCore
-    xmreg::MicroCore mcore;
-
-    // initialize the core using the blockchain path
-    if (!mcore.init(blockchain_path.string()))
-    {
-        cerr << "Error accessing blockchain." << endl;
-        return 1;
-    }
-
-    // get the high level cryptonote::Blockchain object to interact
-    // with the blockchain lmdb database
-    cryptonote::Blockchain& core_storage = mcore.get_core();
 
     // the directory MUST already exist. Make it manually
     path mylmdb_location  = blockchain_path.parent_path() / path("lmdb2");
